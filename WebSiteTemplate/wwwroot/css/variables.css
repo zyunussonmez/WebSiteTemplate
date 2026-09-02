@@ -1,0 +1,60 @@
+﻿:root {
+    /* Colors */
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --surface-soft: #f1f5f9;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --border-hover: #cbd5e1;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --accent-soft: #eff6ff;
+    --success: #16a34a;
+    --warning: #d97706;
+    --danger: #dc2626;
+    /* Typography */
+    --font-body: "Inter", system-ui, sans-serif;
+    --font-display: "Inter", system-ui, sans-serif;
+    /* Radius */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+    --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.06);
+    --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.08);
+    /* Layout */
+    --container-width: 1200px;
+    /* Animation */
+    --transition-fast: 150ms ease;
+    --transition-normal: 250ms ease;
+    /* Glass kart için (Login/Register/Profile sayfaları) */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: var(--border);
+    --accent-dim: rgba(37, 99, 235, 0.12);
+    --font-mono: 'IBM Plex Mono', monospace;
+}
+
+
+/* Dark Mode */
+
+[data-theme="dark"] {
+    --bg: #0b1120;
+    --surface: #111827;
+    --surface-soft: #1e293b;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+    --border: #1e293b;
+    --border-hover: #334155;
+    --accent: #60a5fa;
+    --accent-hover: #93c5fd;
+    --accent-soft: #172554;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.25);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.3);
+    --glass-bg: rgba(17, 24, 39, 0.6);
+    --glass-border: var(--border);
+    --accent-dim: rgba(96, 165, 250, 0.15);
+}

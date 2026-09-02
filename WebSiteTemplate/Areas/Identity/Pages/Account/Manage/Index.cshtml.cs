@@ -16,7 +16,7 @@ using WebSiteTemplate.Resources;
 
 namespace WebSiteTemplate.Areas.Identity.Pages.Account.Manage;
 
-[EnableRateLimiting("AuthPolicy")]
+
 public class IndexModel : PageModel
 {
     private readonly UserManager<ApplicationUser> _userManager;

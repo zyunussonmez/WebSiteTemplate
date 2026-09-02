@@ -1,0 +1,119 @@
+﻿/* Cam kart */
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius-lg);
+    padding: 2.75rem 2.5rem;
+    max-width: 420px;
+    margin: 4rem auto;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+    .glass-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 24px;
+        right: 24px;
+        height: 1px;
+        background: var(--accent);
+        opacity: 0.4;
+    }
+
+.glass-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+/* Form elemanları */
+.form-control, .form-select {
+    background-color: rgba(255, 255, 255, 0.025) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text) !important;
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 1rem;
+}
+
+    .form-control:focus, .form-select:focus {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border-color: var(--accent) !important;
+        box-shadow: 0 0 0 3px var(--accent-dim) !important;
+        color: var(--text) !important;
+    }
+
+    .form-control::placeholder {
+        color: rgba(237, 234, 227, 0.3);
+    }
+
+.form-label, label {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* Butonlar */
+.btn-primary {
+    background: var(--accent) !important;
+    border: none !important;
+    color: var(--bg) !important;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 1.5rem;
+    transition: opacity 0.2s;
+}
+
+    .btn-primary:hover {
+        opacity: 0.85;
+    }
+
+/* Navbar */
+.navbar {
+    background: rgba(11, 13, 16, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.navbar-brand, .nav-link {
+    color: var(--text) !important;
+    font-family: var(--font-display);
+}
+
+/* Tablolar */
+.table {
+    color: var(--text);
+}
+
+    .table > :not(caption) > * > * {
+        background: transparent;
+        border-color: var(--glass-border);
+    }
+
+/* Mesajlar */
+.text-danger {
+    color: var(--danger) !important;
+}
+
+.alert-danger {
+    background: rgba(201, 112, 100, 0.08);
+    border: 1px solid var(--danger);
+    color: var(--text);
+    border-radius: var(--radius-sm);
+}
+
+.alert-success, .text-success {
+    background: rgba(127, 169, 138, 0.08);
+    border-color: var(--success);
+    color: var(--text);
+    border-radius: var(--radius-sm);
+}
+    

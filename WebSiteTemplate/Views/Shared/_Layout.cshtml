@@ -1,62 +1,148 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WebSiteTemplate</title>
+
     <script type="importmap"></script>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebSiteTemplate.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebSiteTemplate</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    @{
-                        var currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
-                    }
-                    <form asp-controller="Culture" asp-action="SetLanguage" asp-area="" method="get" class="d-flex">
-                        <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
-                        <select name="culture" class="form-select form-select-sm" onchange="this.form.submit()" style="width: auto;">
-                            <option value="en" selected="@(currentCulture == "en")">🇬🇧 EN</option>
-                            <option value="tr" selected="@(currentCulture == "tr")">🇹🇷 TR</option>
-                            <option value="de" selected="@(currentCulture == "de")">🇩🇪 DE</option>
-                        </select>
-                    </form>
-                    <partial name="_LoginPartial" />
+    <div class="site-wrapper">
+        <header class="site-header">
+            <nav class="site-navbar">
+                <div class="container navbar-container">
+
+                    <a class="site-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <span class="brand-mark">W</span>
+                        <span class="brand-name">WebSiteTemplate</span>
+                    </a>
+
+                    <button class="navbar-toggle"
+                            type="button"
+                            id="navbarToggle"
+                            aria-label="Toggle navigation"
+                            aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <div class="navbar-collapse" id="mainNavbar">
+                        <ul class="site-nav">
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link-custom">Home</a>
+                            </li>
+                            <li>
+                                <a href="#about" class="nav-link-custom">About</a>
+                            </li>
+                            <li>
+                                <a href="#features" class="nav-link-custom">Features</a>
+                            </li>
+                            <li>
+                                <a href="#projects" class="nav-link-custom">Projects</a>
+                            </li>
+                            <li>
+                                <a asp-area="" asp-controller="Home" asp-action="Privacy" class="nav-link-custom">Privacy</a>
+                            </li>
+                        </ul>
+
+                        <div class="navbar-actions">
+                            @{
+                                var currentCulture = System.Globalization.CultureInfo.CurrentCulture.Name;
+                            }
+
+                            <form asp-controller="Culture" asp-action="SetLanguage" asp-area="" method="get" class="language-form">
+                                <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
+                                <select name="culture" class="language-select" onchange="this.form.submit()">
+                                    <option value="en" selected="@(currentCulture == "en")">EN</option>
+                                    <option value="tr" selected="@(currentCulture == "tr")">TR</option>
+                                    <option value="de" selected="@(currentCulture == "de")">DE</option>
+                                </select>
+                            </form>
+
+                            <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                                <span id="themeIcon">☼</span>
+                            </button>
+
+                            <div class="auth-area">
+                                <partial name="_LoginPartial" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+            </nav>
+        </header>
+
+        <main role="main" class="site-main">
             @RenderBody()
         </main>
+
+        <footer class="site-footer">
+            <div class="container footer-container">
+                <div class="footer-brand">
+                    <span class="brand-mark">W</span>
+                    <span>WebSiteTemplate</span>
+                </div>
+
+                <div class="footer-content">
+                    <span>© 2026 WebSiteTemplate</span>
+                    <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - WebSiteTemplate - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+            const themeToggle = document.getElementById("themeToggle");
+            const themeIcon = document.getElementById("themeIcon");
+            const html = document.documentElement;
+
+            const savedTheme = localStorage.getItem("theme");
+
+            if (savedTheme) {
+                html.setAttribute("data-theme", savedTheme);
+                updateThemeIcon(savedTheme);
+            }
+
+            themeToggle?.addEventListener("click", function() {
+                const currentTheme = html.getAttribute("data-theme");
+                const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+                html.setAttribute("data-theme", newTheme);
+                localStorage.setItem("theme", newTheme);
+                updateThemeIcon(newTheme);
+            });
+
+            function updateThemeIcon(theme) {
+                if (!themeIcon) return;
+                themeIcon.textContent = theme === "dark" ? "☾" : "☼";
+            }
+    </script>
+
+    <script>
+            const navbarToggle = document.getElementById("navbarToggle");
+            const mainNavbar = document.getElementById("mainNavbar");
+
+            navbarToggle?.addEventListener("click", function() {
+                const isOpen = mainNavbar.classList.toggle("show");
+                navbarToggle.setAttribute("aria-expanded", isOpen);
+            });
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

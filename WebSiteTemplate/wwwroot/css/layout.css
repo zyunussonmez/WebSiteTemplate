@@ -244,3 +244,13 @@
         .footer-content a:hover {
             color: var(--accent);
         }
+
+
+/* Auth sayfaları (Login/Register/Profile) için ortalanmış kart alanı */
+.auth-wrapper {
+    min-height: calc(100vh - var(--navbar-height, 72px));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}

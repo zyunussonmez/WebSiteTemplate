@@ -1,21 +1,40 @@
 @page
 @model IndexModel
 @{
-    ViewData["Title"] = "Profile";
+    ViewData["Title"] = "Profil";
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
 
-<h3>@ViewData["Title"]</h3>
-<partial name="_StatusMessage" for="StatusMessage" />
-<div class="row">
-    <div class="col-md-6">
-        <form id="profile-form" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
-                <input asp-for="Username" class="form-control" placeholder="Please choose your username." disabled />
-                <label asp-for="Username" class="form-label"></label>
+<div class="settings-card">
+    <span class="glass-label">HESAP · PROFİL</span>
+    <h2>Profil Bilgilerin</h2>
+
+    <partial name="_StatusMessage" for="StatusMessage" />
+
+    <form id="profile-form" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+        <div class="mb-3">
+            <label asp-for="Username" class="form-label"></label>
+            <input asp-for="Username" class="form-control" placeholder="Kullanıcı adı" disabled />
+        </div>
+
+        <div class="form-row-split mb-3">
+            <div>
+                <label asp-for="Input.Name" class="form-label"></label>
+                <input asp-for="Input.Name" class="form-control" placeholder="Adınız" />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
             </div>
-            <div class="row g-2 mb-3">
+            <div>
+                <label asp-for="Input.Surname" class="form-label"></label>
+                <input asp-for="Input.Surname" class="form-control" placeholder="Soyadınız" />
+                <span asp-validation-for="Input.Surname" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Input.PhoneNumber" class="form-label"></label>
+            <div class="row g-2">
                 <div class="col-4">
                     <select asp-for="Input.CountryCode" class="form-select">
                         <option value="+90">🇹🇷 +90</option>
@@ -29,25 +48,16 @@
                 </div>
             </div>
             <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Name" class="form-control" placeholder="Adınız" />
-                <label asp-for="Input.Name" class="form-label"></label>
-                <span asp-validation-for="Input.Name" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Surname" class="form-control" placeholder="Soyadınız" />
-                <label asp-for="Input.Surname" class="form-label"></label>
-                <span asp-validation-for="Input.Surname" class="text-danger"></span>
-            </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.ProfileImageUrl" class="form-control" placeholder="Profil fotoğrafı URL" />
-                <label asp-for="Input.ProfileImageUrl" class="form-label"></label>
-                <span asp-validation-for="Input.ProfileImageUrl" class="text-danger"></span>
-            </div>
+        </div>
 
-            <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
-        </form>
-    </div>
+        <div class="mb-3">
+            <label asp-for="Input.ProfileImageUrl" class="form-label"></label>
+            <input asp-for="Input.ProfileImageUrl" class="form-control" placeholder="https://..." />
+            <span asp-validation-for="Input.ProfileImageUrl" class="text-danger"></span>
+        </div>
+
+        <button id="update-profile-button" type="submit" class="btn btn-primary w-100">Kaydet</button>
+    </form>
 </div>
 
 @section Scripts {

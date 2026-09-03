@@ -44,3 +44,10 @@
         flex: 1;
     }
 }
+
+@media (max-width: 576px) {
+    .form-row-split {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}

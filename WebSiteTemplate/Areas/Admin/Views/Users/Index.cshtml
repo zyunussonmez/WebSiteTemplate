@@ -1,44 +1,51 @@
 ﻿@model List<WebSiteTemplate.Models.ApplicationUser>
 @{
-    Layout = "_Layout";
     ViewData["Title"] = "Kullanıcılar";
     var userRoles = ViewBag.UserRoles as Dictionary<string, IList<string>>;
+    
 }
+
+<div class="admin-page-header">
+    <h2>Kullanıcı Yönetimi</h2>
+    <p>Kayıtlı kullanıcıları görüntüle ve rollerini yönet.</p>
+</div>
+
 @if (TempData["ErrorMessage"] != null)
 {
-    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    <div class="alert alert-danger mb-3">@TempData["ErrorMessage"]</div>
 }
-<h2>Kullanıcı Yönetimi</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Ad Soyad</th>
-            <th>Email</th>
-            <th>Aktif Rol</th>
-            <th>Rol Değiştir</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in Model)
-        {
-            var roles = userRoles != null && userRoles.ContainsKey(user.Id) ? userRoles[user.Id] : new List<string>();
-            var currentRole = roles.FirstOrDefault() ?? "User";
+<div class="admin-panel">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@user.Name @user.Surname</td>
-                <td>@user.Email</td>
-                <td>@string.Join(", ", roles)</td>
-                <td>
-                    <form asp-action="ChangeRole" asp-controller="Users" asp-area="Admin" method="post" class="d-flex gap-2">
-                        <input type="hidden" name="userId" value="@user.Id" />
-                        <select name="newRole" class="form-select form-select-sm">
-                            <option value="User" selected="@(currentRole == "User")">User</option>
-                            <option value="Admin" selected="@(currentRole == "Admin")">Admin</option>
-                        </select>
-                        <button type="submit"  class="btn btn-sm btn-primary">Güncelle</button>
-                    </form>
-                </td>
+                <th>Ad Soyad</th>
+                <th>Email</th>
+                <th>Aktif Rol</th>
+                <th>Rol Değiştir</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                var roles = userRoles != null && userRoles.ContainsKey(user.Id) ? userRoles[user.Id] : new List<string>();
+                var currentRole = roles.FirstOrDefault() ?? "User";
+                <tr>
+                    <td>@user.Name @user.Surname</td>
+                    <td>@user.Email</td>
+                    <td>@string.Join(", ", roles)</td>
+                    <td>
+                        <form asp-action="ChangeRole" method="post" class="d-flex gap-2">
+                            <input type="hidden" name="userId" value="@user.Id" />
+                            <select name="newRole" class="form-select form-select-sm">
+                                <option value="User" selected="@(currentRole == "User")">User</option>
+                                <option value="Admin" selected="@(currentRole == "Admin")">Admin</option>
+                            </select>
+                            <button type="submit" class="btn btn-sm btn-primary">Güncelle</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

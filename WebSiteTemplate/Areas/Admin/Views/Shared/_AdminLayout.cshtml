@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="~/css/admin.css" rel="stylesheet" />
+   
+</head>
+<body>
+    <header class="admin-topbar">
+        <button type="button" class="admin-sidebar-toggle" id="sidebarToggle" aria-label="Menüyü aç/kapat">
+            <span>☰</span>
+        </button>
+        <span class="admin-topbar-brand">WebSiteTemplate · Admin</span>
+        <div class="admin-topbar-spacer"></div>
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link-custom">← Siteye Dön</a>
+    </header>
+
+    <div class="admin-shell" id="adminShell">
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-title">Yönetim Paneli</div>
+            <ul class="admin-nav">
+                <li>
+                    <a class="admin-nav-link" asp-area="Admin" asp-controller="Admin" asp-action="Index">
+                        Panel
+                    </a>
+                </li>
+                <li>
+                    <a class="admin-nav-link" asp-area="Admin" asp-controller="Users" asp-action="Index">
+                        Kullanıcılar
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="admin-content">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script>
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme) {
+                document.documentElement.setAttribute("data-theme", savedTheme);
+            }
+
+            const sidebarToggle = document.getElementById("sidebarToggle");
+            const adminShell = document.getElementById("adminShell");
+
+            // Tercihi hatırla
+            const sidebarState = localStorage.getItem("adminSidebar");
+            if (sidebarState === "collapsed") {
+                adminShell.classList.add("sidebar-collapsed");
+            }
+
+            sidebarToggle?.addEventListener("click", function() {
+                adminShell.classList.toggle("sidebar-collapsed");
+                const isCollapsed = adminShell.classList.contains("sidebar-collapsed");
+                localStorage.setItem("adminSidebar", isCollapsed ? "collapsed" : "open");
+            });
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

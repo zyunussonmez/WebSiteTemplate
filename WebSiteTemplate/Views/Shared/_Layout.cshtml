@@ -51,6 +51,14 @@
                             <li>
                                 <a href="#projects" class="nav-link-custom">Projects</a>
                             </li>
+
+                            @if (User.IsInRole(WebSiteTemplate.Models.Constants.RoleNames.Admin))
+                            {
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Admin" asp-action="Index" class="nav-link-custom">Admin Paneli</a>
+                                </li>
+                            }
+
                             <li>
                                 <a asp-area="" asp-controller="Home" asp-action="Privacy" class="nav-link-custom">Privacy</a>
                             </li>

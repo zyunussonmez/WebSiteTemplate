@@ -78,6 +78,8 @@ public class IndexModel : PageModel
         public string? ProfileImageUrl { get; set; }
     }
 
+    private static readonly string[] KnownCountryCodes = { "+90", "+1", "+49", "+44" };
+
     private async Task LoadAsync(ApplicationUser user)
     {
         var userName = await _userManager.GetUserNameAsync(user);
@@ -85,9 +87,27 @@ public class IndexModel : PageModel
 
         Username = userName;
 
+        var countryCode = "+90";
+        var localNumber = phoneNumber;
+
+        if (!string.IsNullOrEmpty(phoneNumber))
+        {
+            var matchedCode = KnownCountryCodes
+                .Where(code => phoneNumber.StartsWith(code))
+                .OrderByDescending(code => code.Length)
+                .FirstOrDefault();
+
+            if (matchedCode != null)
+            {
+                countryCode = matchedCode;
+                localNumber = phoneNumber.Substring(matchedCode.Length);
+            }
+        }
+
         Input = new InputModel
         {
-            PhoneNumber = phoneNumber,
+            CountryCode = countryCode,
+            PhoneNumber = localNumber,
             Name = user.Name,
             Surname = user.Surname,
             ProfileImageUrl = user.ProfileImageUrl

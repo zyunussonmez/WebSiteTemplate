@@ -1,17 +1,140 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<WebSiteTemplate.SharedResource> Localizer
 
-<div class="container" style="padding-top: 3rem; padding-bottom: 3rem;">
-    <p>@Localizer["Welcome"]</p>
+<section class="hero">
+    <div class="container hero-container">
+        <div class="hero-content">
+            <span class="hero-eyebrow">ASP.NET CORE MVC TEMPLATE</span>
 
-    <div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-        <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+            <h1>
+                Build something
+                <span>simple & powerful.</span>
+            </h1>
+
+            <p class="hero-description">
+                A modern, reusable and developer-friendly ASP.NET Core MVC
+                template designed to help you build faster.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#features" class="btn btn-primary">
+                    Explore Template
+                </a>
+
+                <a href="#components" class="btn btn-secondary">
+                    View Components
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="dashboard-preview">
+                <div class="preview-header">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="preview-content">
+                    <div class="preview-sidebar"></div>
+
+                    <div class="preview-main">
+                        <div class="preview-title"></div>
+
+                        <div class="preview-stats">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+
+                        <div class="preview-chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
 
-</div>
+<section class="features-section" id="features">
+    <div class="container">
+        <div class="section-heading">
+            <span class="section-eyebrow">FEATURES</span>
+            <h2>Everything you need to start.</h2>
+            <p>
+                A clean foundation for modern ASP.NET Core applications.
+            </p>
+        </div>
 
+        <div class="features-grid">
+            <article class="feature-card">
+                <div class="feature-icon">✦</div>
+                <h3>Modern UI</h3>
+                <p>
+                    Clean and reusable components built with a consistent
+                    design system.
+                </p>
+            </article>
 
+            <article class="feature-card">
+                <div class="feature-icon">⌘</div>
+                <h3>Developer Friendly</h3>
+                <p>
+                    Organized architecture that makes extending your
+                    application simple.
+                </p>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon">◈</div>
+                <h3>Responsive</h3>
+                <p>
+                    Designed to provide a smooth experience across desktop,
+                    tablet and mobile devices.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="tech-section">
+    <div class="container">
+        <div class="tech-content">
+            <span class="section-eyebrow">BUILT WITH</span>
+
+            <h2>Everything works together.</h2>
+
+            <p>
+                A solid foundation built around the technologies you already
+                know.
+            </p>
+        </div>
+
+        <div class="tech-grid">
+            <div class="tech-item">ASP.NET Core</div>
+            <div class="tech-item">Entity Framework</div>
+            <div class="tech-item">PostgreSQL</div>
+            <div class="tech-item">Identity</div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-card">
+            <div>
+                <span class="section-eyebrow">GET STARTED</span>
+                <h2>Ready to build something?</h2>
+                <p>
+                    Start with the template and make it your own.
+                </p>
+            </div>
+
+            <a href="#features" class="btn btn-primary">
+                Get Started
+            </a>
+        </div>
+    </div>
+</section>

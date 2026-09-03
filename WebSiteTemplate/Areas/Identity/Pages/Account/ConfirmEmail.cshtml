@@ -1,8 +1,17 @@
 @page
 @model ConfirmEmailModel
 @{
-    ViewData["Title"] = "Confirm email";
+    ViewData["Title"] = "Email Onayı";
 }
 
-<h1>@ViewData["Title"]</h1>
-<partial name="_StatusMessage" model="Model.StatusMessage" />
+<div class="auth-wrapper">
+    <div class="glass-card">
+        <span class="glass-label">AUTH · EMAIL ONAYI</span>
+        <h2>Hesabın Onaylandı</h2>
+        <partial name="_StatusMessage" model="Model.StatusMessage" />
+
+        <p>Email adresin başarıyla doğrulandı, artık giriş yapabilirsin.</p>
+
+        <a asp-page="./Login" class="btn btn-primary w-100">Giriş Yap</a>
+    </div>
+</div>

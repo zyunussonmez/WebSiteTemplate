@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
@@ -65,8 +66,11 @@ namespace WebSiteTemplate
                 });
             });
 
-            builder.Services
-                .AddControllersWithViews()
+            builder.Services.
+                AddControllersWithViews(options =>
+                {
+                    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                })
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization();
 
@@ -74,10 +78,10 @@ namespace WebSiteTemplate
             {
                 var supportedCultures = new[]
                 {
-        new CultureInfo("en"),
-        new CultureInfo("tr"),
-        new CultureInfo("de")
-    };
+                new CultureInfo("en"),
+                new CultureInfo("tr"),
+                new CultureInfo("de")
+                };
 
                 options.DefaultRequestCulture = new RequestCulture("en");
                 options.SupportedCultures = supportedCultures;
